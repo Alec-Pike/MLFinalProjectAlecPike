@@ -1,7 +1,7 @@
 # MLFinalProjectAlecPike
 Code and data used in my machine learning project
 
-## Topic: determining a word's source language based on letter frequencies
+Topic: determining a word's source language based on letter frequencies
 
 ### Citations:
 
