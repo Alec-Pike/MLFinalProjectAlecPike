@@ -1,0 +1,58 @@
+import tensorflow as tf
+
+def build_neural_net(
+    input_shape: Tuple, 
+    n_layers: int,
+    n_units_per_layer: int,
+    n_outputs: int,
+    loss: str,
+    metrics: List[str],
+    optimizer: str = 'adam',
+    hidden_activation: str = 'relu',
+    output_activation: str = 'linear'
+) -> tf.keras.Sequential:
+    """ A wrapper function for TensorFlow that automatically creates a 
+        neural network based on the specified parameters.
+
+        Args:
+            input_shape: a tuple signifying the shape of the input data
+
+            n_layers: the number of hidden layers in the network
+            
+            n_units_per_layer: the number of neurons in each hidden layer
+
+            n_outputs: the number of values produced by the output layer
+
+            loss: string signifying how the model should compute loss
+            
+            metrics: list of strings signifying how to judge model 
+                performance
+            
+            optimizer: string signifying the optimization algorithm to
+                be used in training (defaults to 'adam')
+
+            hidden_activation: string signifying the activation function
+                to use in the hidden layers (defaults to 'relu')
+
+            output_activation: string signifying the activation function
+                to use in the output layer (defaults to 'linear')
+
+        Return:
+            A tf.keras.Sequential object containing the desired neural
+                network
+    """
+
+    # Declare model and specify input shape
+    out = tf.keras.Sequential([tf.keras.Input(shape=input_shape)])
+    
+    # Iteratively add hidden layers
+    for i in range(n_layers):
+        out.add(tf.keras.layers.Dense(n_units_per_layer, activation=hidden_activation))
+        
+    # Add the output layer
+    out.add(tf.keras.layers.Dense(n_outputs, activation=output_activation))
+    
+    # Compile
+    out.compile(optimizer=optimizer, loss=loss, metrics=metrics)
+
+    return out
