@@ -1,5 +1,4 @@
-# MLFinalProjectAlecPike
-Code and data used in my machine learning project
+# SourceLanguageDetectionModel
 
 Topic: determining a word's source language based on letter frequencies
 
