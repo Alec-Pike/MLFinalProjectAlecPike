@@ -12,7 +12,8 @@ def build_neural_net(
     output_activation: str = 'linear'
 ) -> tf.keras.Sequential:
     """ A wrapper function for TensorFlow that automatically creates a 
-        neural network based on the specified parameters.
+        neural network based on the specified parameters. Written by
+        Alec Pike. 
 
         Args:
             input_shape: a tuple signifying the shape of the input data
